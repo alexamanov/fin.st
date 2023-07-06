@@ -12,15 +12,22 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const ID = 'id';
+    public const NAME = 'name';
+    public const EMAIL = 'email';
+    public const PASSWORD = 'password';
+    public const REMEMBER_TOKEN = 'remember_token';
+    public const EMAIL_VERIFIED_AT = 'email_verified_at';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        self::NAME,
+        self::EMAIL,
+        self::PASSWORD,
     ];
 
     /**
@@ -29,8 +36,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        self::PASSWORD,
+        self::REMEMBER_TOKEN,
     ];
 
     /**
@@ -39,7 +46,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        self::EMAIL_VERIFIED_AT => 'datetime',
+        self::PASSWORD => 'hashed',
     ];
 }
